@@ -1,0 +1,45 @@
+<patterndb version='4' pub_date='2025-09-08'>
+  <ruleset name='cisco_asa' id='1'>
+    <rules>
+
+      <!-- Cisco ASA -->
+        
+        <rule id="cisco-asa-icmp-teardown" class="cisco-asa" provider="cisco">
+          <patterns>
+            <pattern>Teardown ICMP connection for @STRING@ @IPv4:sourceIpV4@/@NUMBER:sourcePort@ @STRING@ @IPv4:destinationIpV4@/@NUMBER:destinationPort@ @ANYSTRING@</pattern>
+          </patterns>
+          <values><value name="protocolId">1</value></values>
+          <values><value name="totalBytes">0</value></values>
+        </rule>
+
+        <rule id="cisco-asa-tcp-dynamic-teardown" class="cisco-asa" provider="cisco">
+          <patterns>
+            <pattern>Teardown dynamic TCP translation from @STRING:ingressNIC@:@IPv4:sourceIpV4@/@NUMBER:sourcePort@ to @STRING:egressNIC@:@IPv4:destinationIpV4@/@NUMBER:destinationPort@ duration @ANYSTRING:duration@</pattern>
+          </patterns>
+          <values><value name="protocolId">6</value></values>
+        </rule>
+
+        <rule id="cisco-asa-udp-dynamic-teardown" class="cisco-asa" provider="cisco">
+          <patterns>
+            <pattern>Teardown dynamic UDP translation from @STRING:ingressNIC@:@IPv4:sourceIpV4@/@NUMBER:sourcePort@ to @STRING:egressNIC@:@IPv4:destinationIpV4@/@NUMBER:destinationPort@ duration @ANYSTRING:duration@</pattern>
+          </patterns>
+          <values><value name="protocolId">17</value></values>
+        </rule>
+
+        <rule id="cisco-asa-tcp-generic-teardown" class="cisco-asa" provider="cisco">
+          <patterns>
+            <pattern>Teardown TCP connection @NUMBER:connectionID@ for @STRING:ingressNIC@:@IPv4:sourceIpV4@/@NUMBER:sourcePort@ to @STRING:egressNIC@:@IPv4:destinationIpV4@/@NUMBER:destinationPort@ duration @STRING@:@STRING@:@STRING@ bytes @STRING:totalBytes@</pattern>
+          </patterns>
+          <values><value name="protocolId">6</value></values>
+        </rule>
+
+        <rule id="cisco-asa-udp-generic-teardown" class="cisco-asa" provider="cisco">
+          <patterns>
+            <pattern>Teardown UDP connection @NUMBER:connectionID@ for @STRING:ingressNIC@:@IPv4:sourceIpV4@/@NUMBER:sourcePort@ to @STRING:egressNIC@:@IPv4:destinationIpV4@/@NUMBER:destinationPort@ duration @STRING@:@STRING@:@STRING@ bytes @STRING:totalBytes@</pattern>
+          </patterns>
+          <values><value name="protocolId">17</value></values>
+        </rule>
+
+    </rules>
+  </ruleset>
+</patterndb>
