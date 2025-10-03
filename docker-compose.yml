@@ -10,4 +10,4 @@ services:
     volumes:
       - ./syslog-ng/syslog-ng.conf:/etc/syslog-ng/syslog-ng.conf:ro
       - ./syslog-ng/patterndb.d/:/etc/syslog-ng/patterndb.d/:ro
-      - ./logs:/var/log/cisco-asa
+      - ./logs:/var/log/flowdb/ingestion/
